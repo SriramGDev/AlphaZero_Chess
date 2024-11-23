@@ -229,7 +229,6 @@ def MCTS_self_play(chessnet,num_games,cpu):
     
 if __name__=="__main__":
     
-    net_to_play="current_net_trained8_iter1.pth.tar"
     mp.set_start_method("spawn",force=True)
     net = ChessNet()
     cuda = torch.cuda.is_available()
@@ -243,12 +242,12 @@ if __name__=="__main__":
     
     current_net_filename = os.path.join("./model_data/",\
                                     net_to_play)
-    checkpoint = torch.load(current_net_filename)
-    net.load_state_dict(checkpoint['state_dict'])
-    processes = []
-    for i in range(6):
-        p = mp.Process(target=MCTS_self_play,args=(net,50,i))
-        p.start()
-        processes.append(p)
-    for p in processes:
-        p.join()
+    #checkpoint = torch.load(current_net_filename)
+    #net.load_state_dict(checkpoint['state_dict'])
+    #processes = []
+    #for i in range(6):
+    #    p = mp.Process(target=MCTS_self_play,args=(net,50,i))
+    #    p.start()
+    #    processes.append(p)
+    #for p in processes:
+    #    p.join()

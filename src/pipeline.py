@@ -11,7 +11,7 @@ import torch.multiprocessing as mp
 if __name__=="__main__":
     for iteration in range(10):
         # Runs MCTS
-        net_to_play="current_net_trained8_iter1.pth.tar"
+        net_to_play="current_net.pth.tar"
         mp.set_start_method("spawn",force=True)
         net = ChessNet()
         cuda = torch.cuda.is_available()
@@ -33,7 +33,7 @@ if __name__=="__main__":
             p1.join()
             
         # Runs Net training
-        net_to_train="current_net_trained8_iter1.pth.tar"; save_as="current_net_trained8_iter1.pth.tar"
+        net_to_train="current_net.pth.tar"; save_as="current_net_trained_iter"+str(iteration)+".pth.tar"
         # gather data
         data_path = "./datasets/iter0/"
         datasets = []
